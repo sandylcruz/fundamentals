@@ -4,6 +4,9 @@
 # factors of a given number.
 
 def factors(num)
+  factor_array = []
+  if number % number == 0
+
 end
 
 # ### Bubble Sort

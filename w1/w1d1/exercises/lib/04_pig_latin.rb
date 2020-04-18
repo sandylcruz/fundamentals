@@ -8,7 +8,7 @@ end
 
 def translate(word)
   new_words = []
-  
+       
   word.split(' ').each do |word|
     new_words << translate_word(word)
   end
