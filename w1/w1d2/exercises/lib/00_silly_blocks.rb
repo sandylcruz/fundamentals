@@ -19,14 +19,14 @@ def reverser(&prc)
   end
 
   reverse_array.join(' ')
-
 end
-
 
 def adder(surplus = 1, &prc)
   prc.call + surplus
 end
 
-def repeater(times = 1, &prc)
-  prc.call
+def repeater(number = 1, &prc)
+  number.times do
+    prc.call
+  end
 end
