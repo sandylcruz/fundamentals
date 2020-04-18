@@ -3,10 +3,14 @@
 # Write a method `factors(num)` that returns an array containing all the
 # factors of a given number.
 
-def factors(num)
+def factors(number)
   factor_array = []
-  if number % number == 0
-
+  (1..number).each do |n|
+    if number % n == 0
+      factor_array << n
+    end
+  end
+  factor_array
 end
 
 # ### Bubble Sort
@@ -70,16 +74,52 @@ end
 # words).
 
 def substrings(string)
+  substring_array = []
+
+  start_index = 0
+  end_index = 0
+  while start_index < string.length
+    while end_index < string.length
+      substring = string[start_index..end_index]
+      substring_array << substring
+      end_index += 1
+    end
+    start_index += 1
+    end_index = start_index
+  end
+  substring_array
 end
 
 def subwords(word, dictionary)
+  word_substrings = substrings(word).uniq
+  word_substrings.select do |w|
+    dictionary.include?(w)
+  end
 end
+
+# def subwords(target, keyword_array)
+#   string_accumulator = []
+#   keywords_found = []
+#   keyword_array.each do |string|
+#     string_accumulator << string
+#   end
+#   if target.include?(string_accumulator)
+#     keywords_found << string
+#   end
+#   keywords_found
+# end
+
+
+
 
 # ### Doubler
 # Write a `doubler` method that takes an array of integers and returns an
 # array with the original elements multiplied by two.
 
 def doubler(array)
+  array.map do |number|
+    number * 2
+  end
 end
 
 # ### My Each
@@ -144,4 +184,7 @@ end
 # ```
 
 def concatenate(strings)
+  strings.inject("") do |total, string|
+    total + string
+  end
 end

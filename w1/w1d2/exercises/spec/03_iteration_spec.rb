@@ -1,7 +1,7 @@
 require "rspec"
 require "03_iteration"
 
-describe "#factors" do
+fdescribe "#factors" do
   it "returns factors of 10 in order" do
     expect(factors(10)).to eq([1, 2, 5, 10])
   end
