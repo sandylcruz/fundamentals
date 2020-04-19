@@ -53,12 +53,38 @@ end
 # http://stackoverflow.com/questions/827649/what-is-the-ruby-spaceship-operator
 
 class Array
-  def bubble_sort!
+  def bubble_sort!(&prc)
+    touched = true
+    while touched
+      touched = false
+      i = 0
+      while i < self.length - 1
+        left_element = self[i]
+        right_element = self[i + 1]
+        needs_swap = false
+        if prc
+          balance = prc.call(left_element, right_element)
+          needs_swap = balance == 1
+        elsif left_element > right_element
+          needs_swap = true
+        end
+        if needs_swap
+          self[i], self[i + 1] = self[i + 1], self[i]
+          touched = true
+        end
+        i += 1
+      end
+    end
+    self
   end
 
   def bubble_sort(&prc)
+
   end
 end
+
+array = [1, 2, 3]
+array.bubble_sort! { |left, right| }
 
 # ### Substrings and Subwords
 #
