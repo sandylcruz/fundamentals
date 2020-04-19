@@ -79,18 +79,22 @@ end
 
 class Array
   def two_sum
-  end
-end
-
-# Median
-#
-# Write a method that finds the median of a given array of integers. If
-# the array has an odd number of integers, return the middle item from the
-# sorted array. If the array has an even number of integers, return the
-# average of the middle two items from the sorted array.
-
-class Array
-  def median
+    pairs_accumulator = []
+    i = 0
+    while i < self.length - 1
+      j = i + 1
+      while j < self.length
+        start_value = self[i]
+        end_value = self[j]
+        sum = start_value + end_value
+        if sum == 0
+          pairs_accumulator << [i, j]
+        end
+        j += 1
+      end
+      i += 1
+    end
+    pairs_accumulator
   end
 end
 
@@ -143,8 +147,33 @@ end
 
 class Array
   def my_transpose
+    size.times do |i|
+      0.upto(i) do |j|                                   # iterate only through lower half
+        self[i][j], self[j][i] = self[j][i], self[i][j]  # swap rows and cols
+      end
+    end
+    self
   end
 end
 
 # Bonus: Refactor your `Array#my_transpose` method to work with any rectangular
 # matrix (not necessarily a square one).
+
+# Median
+#
+# Write a method that finds the median of a given array of integers. If
+# the array has an odd number of integers, return the middle item from the
+# sorted array. If the array has an even number of integers, return the
+# average of the middle two items from the sorted array.
+
+class Array
+  def median
+    return nil if empty?
+    sorted_numbers = self.sort
+    if length.odd?
+      sorted_numbers[length / 2]
+    elsif length.even?
+      (sorted_numbers[length/2] + sorted_numbers[length/2 - 1]) / 2.0
+    end
+  end
+end

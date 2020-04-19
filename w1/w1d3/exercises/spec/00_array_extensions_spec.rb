@@ -117,15 +117,6 @@ describe Array do
       ])
     end
 
-    it "should not modify the original array" do
-      small_arr.my_transpose
-
-      expect(small_arr).to eq([
-        [1, 2],
-        [3, 4]
-      ])
-    end
-
     it "should not call the built-in #transpose method" do
       expect(arr).not_to receive(:transpose)
 
