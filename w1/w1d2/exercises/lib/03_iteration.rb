@@ -191,12 +191,24 @@ end
 
 class Array
   def my_map(&prc)
+    result = []
+    self.my_each do |item|
+      new_item = prc.call(item)
+      result.push(new_item)
+    end
+    result
   end
 
   def my_select(&prc)
+    true_result = []
+    self.my_each { |item| true_result.push(item) if prc.call(item) }
+    true_result
   end
 
   def my_inject(&blk)
+    # result = []
+    # self.my_each { | | }
+    # result
   end
 end
 
