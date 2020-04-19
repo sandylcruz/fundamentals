@@ -79,7 +79,7 @@ class Array
   end
 
   def bubble_sort(&prc)
-
+    self.dup.bubble_sort!(&prc)
   end
 end
 
