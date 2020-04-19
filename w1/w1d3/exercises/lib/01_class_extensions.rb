@@ -18,6 +18,18 @@
 
 class String
   def caesar(shift)
+    string = self.downcase
+    caesar_string = ""
+
+    string.each_byte do |ascii|
+      letter_position = ascii - "a".ord
+
+      shifted_letter_position = (letter_position + shift) % 26
+
+      caesar_string << ("a".ord + shifted_letter_position).chr
+    end
+
+    caesar_string
   end
 end
 
