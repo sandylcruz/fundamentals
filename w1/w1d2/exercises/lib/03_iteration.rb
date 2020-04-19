@@ -205,10 +205,15 @@ class Array
     true_result
   end
 
-  def my_inject(&blk)
-    # result = []
-    # self.my_each { | | }
-    # result
+  def my_inject(&prc)
+    accumulator = self[0]
+
+    self.drop(1).my_each do |item|
+      updated_accumulator = prc.call(accumulator, item)
+      accumulator = updated_accumulator
+    end
+
+    accumulator
   end
 end
 
