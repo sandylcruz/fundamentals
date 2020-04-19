@@ -5,6 +5,11 @@
 
 class Array
   def sum
+    sum = 0
+    self.each do |number|
+      sum += number
+    end
+    sum
   end
 end
 
@@ -15,10 +20,19 @@ end
 # method, which mutates the original array.
 
 class Array
-  def square!
+  def square
+    squared_array = []
+    self.each do |number|
+      squared_array << (number * number)
+    end
+    squared_array
   end
 
-  def square
+  def square!
+    self.each_with_index do |number, index|
+      self[index] = number * number
+    end
+    self
   end
 end
 
@@ -36,6 +50,14 @@ end
 
 class Array
   def my_uniq
+    unique_array = []
+
+    self.each do |number|
+      unless unique_array.include?(number)
+        unique_array << number
+      end
+    end
+    unique_array
   end
 end
 
