@@ -83,9 +83,6 @@ class Array
   end
 end
 
-array = [1, 2, 3]
-array.bubble_sort! { |left, right| }
-
 # ### Substrings and Subwords
 #
 # Write a method, `substrings`, that will take a `String` and return an
@@ -135,9 +132,6 @@ end
 #   keywords_found
 # end
 
-
-
-
 # ### Doubler
 # Write a `doubler` method that takes an array of integers and returns an
 # array with the original elements multiplied by two.
@@ -173,6 +167,12 @@ end
 
 class Array
   def my_each(&prc)
+    i = 0
+    while i < self.count
+      prc.call(self[i])
+      i += 1
+    end
+    self
   end
 end
 
