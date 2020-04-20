@@ -48,6 +48,21 @@ end
 
 class Hash
   def difference(other_hash)
+    difference_hash = {}
+
+    self.keys.each do |key|
+      unless other_hash.has_key?(key)
+        value = self[key]
+        difference_hash[key] = value
+      end
+    end
+    other_hash.keys.each do |key|
+      unless self.has_key?(key)
+        value = other_hash[key]
+        difference_hash[key] = value
+      end
+    end
+    difference_hash
   end
 end
 
